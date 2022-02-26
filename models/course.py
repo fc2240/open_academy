@@ -14,7 +14,7 @@ class Course(models.Model):
     name=fields.Char(string='Titulo',required=True)
     description=fields.Text()
     duracion = fields.Integer(string='Tiempo [Años]')
-
+    
  # vvvv para ejercicio Many2one  desde aqui vvvv
 
     id_responsable=fields.Many2one('res.users',string="responsable",index=True)
@@ -37,7 +37,10 @@ class Session(models.Model):
  
     # vvvv para ejercicio Many2one  desde aqui vvvv
 
-    id_teacher= fields.Many2one('res.partner',string='Profesor')
+    id_instructor = fields.Many2one('res.partner', string="Instructor",
+                                    domain=['|', ('instructor', '=', True),
+                                            ('category_id.name', 'ilike', "Teacher")])
+  #  fin DOMAIN EDIT
     id_course=fields.Many2one('open_academy.course',string='Curso' ,index=True)
     #  para ejercicio Many2one 
 

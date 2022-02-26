@@ -30,7 +30,7 @@
                                   <field name="id_session">
                                           <tree string="Sessiones registradas">
                                             <field name="name"/>
-                                            <field name="id_teacher"/>
+                                            <field name="id_instructor"/>
                                           </tree>
                                      </field>
                                   </page>
@@ -136,7 +136,7 @@
            
                     <group string="Datos">
                       <field name="id_course" />
-                      <field name="id_teacher" />
+                      <field name="id_instructor" />
                       <field name="name" />
                     </group>
                     <group string="Programación">
