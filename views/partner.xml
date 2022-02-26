@@ -38,7 +38,7 @@
            action="contact_list" />
 
         <record model="ir.actions.act_window" id="contact_cat_list_action">
-                        <field name="name">Contactos DATA</field>
+                        <field name="name">Contactos Informacion</field>
                         <field name="res_model">res.partner.category</field>
                         <field name="view_mode">tree,form</field>
                         </record>
