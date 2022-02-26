@@ -14,16 +14,16 @@ class Course(models.Model):
     name=fields.Char(string='Titulo',required=True)
     description=fields.Text()
     duracion = fields.Integer(string='Tiempo [Años]')
-    
- # vvvv para ejercicio Many2one  desde aqui vvvv
+
+ # Many2One
 
     id_responsable=fields.Many2one('res.users',string="responsable",index=True)
-    # vvvv para ejercicio Many2one 
+     
    
 
-  # EJERCICIO  ( 2 ) ONE2MANY INICIO 
+  
     id_session=fields.One2many('open_academy.session','id_course', string='sesiones')
-  # EJERCICIO  ( 2 ) ONE2MANY FIN
+  #------------------------------------------------------------------------------------------------
 
 
 class Session(models.Model):
@@ -35,15 +35,27 @@ class Session(models.Model):
     duration = fields.Float( string="Duración" ,digits=(6,2), help='duración en dias')
     seats = fields.Integer(string="número de asientos")
  
-    # vvvv para ejercicio Many2one  desde aqui vvvv
-
+  
+    #Ejr. Edit Domain
     id_instructor = fields.Many2one('res.partner', string="Instructor",
                                     domain=['|', ('instructor', '=', True),
                                             ('category_id.name', 'ilike', "Teacher")])
-  #  fin DOMAIN EDIT
+  #--------------------------------------------------------------------------------------------
+    #Ejercicios Many2one
     id_course=fields.Many2one('open_academy.course',string='Curso' ,index=True)
-    #  para ejercicio Many2one 
-
-  # EJERCICIO  ( 2 ) MANY2MANY INICIO 
+    
     id_asistente= fields.Many2many('res.partner',string="asistentes")
-    # EJERCICIO  ( 2 ) MANY2MANY FIN
+    #-------------------------------------------------------------------------  
+
+
+    #  Ejr. DEPENDECIAS
+    seats_busy = fields.Float('Sillas Ocupadas', compute='_taken_seats')
+
+    @api.depends('seats','id_asistente')
+    def _taken_seats(self):
+      for r in self:
+        if not r.seats:
+          r.seats_busy= 0.0
+        else:
+          r.seats_busy= 100.0*len(r.id_asistente)/r.seats
+ #  avance ejerccio de dependencias fin
