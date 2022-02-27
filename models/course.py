@@ -57,4 +57,4 @@ class Session(models.Model):
           r.seats_busy= 0.0
         else:
           r.seats_busy= 100.0*len(r.id_asistente)/r.seats
- #  avance ejerccio de dependencias fin
+ 
