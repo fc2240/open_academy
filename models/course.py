@@ -15,9 +15,10 @@ class Course(models.Model):
     description=fields.Text()
     duracion = fields.Integer(string='Tiempo [Años]')
 
- # Many2One
+ #----------------------------------------
 
     id_responsable=fields.Many2one('res.users',string="responsable",index=True)
+     
      
    
 
@@ -41,14 +42,12 @@ class Session(models.Model):
                                     domain=['|', ('instructor', '=', True),
                                             ('category_id.name', 'ilike', "Teacher")])
   #--------------------------------------------------------------------------------------------
-    #Ejercicios Many2one
+  
     id_course=fields.Many2one('open_academy.course',string='Curso' ,index=True)
     
     id_asistente= fields.Many2many('res.partner',string="asistentes")
     #-------------------------------------------------------------------------  
 
-
-    #  Ejr. DEPENDECIAS
     seats_busy = fields.Float('Sillas Ocupadas', compute='_taken_seats')
 
     @api.depends('seats','id_asistente')

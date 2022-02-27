@@ -107,7 +107,7 @@
           </field>
         </record> -->
 
-      <!-- Ejr. Action list -->  
+    
         <record id="action_list" model="ir.actions.act_window">
           <field name="name">Course</field>
           <field name="res_model">open_academy.course</field>
@@ -126,7 +126,7 @@
         <menuitem id="session_menu" name="Curso" parent="sub_main_menu" action="action_list"/>
 
 
-<!-- Ejr. Sessions-M2O  -->
+
 
         <record model="ir.ui.view" id="session_view" >
             <field name="name">session.form</field>
@@ -150,8 +150,9 @@
                 
                  
                   <group>
+                  
                   <field name="id_asistente" widget="many2many"/>
-                    <!-- <field name="id_asistente" widget="many2many_tags"/> -->
+                   
                   </group>
                     
                   </sheet>
@@ -159,7 +160,7 @@
             </field>
         </record>
 
-        <!-- ANADIDO EN MANY2ONE INICIO -->
+        
       <record id="session_tree_view" model="ir.ui.view">
       <field name="name">session.tree</field>
       <field name="model">open_academy.session</field>
@@ -174,7 +175,6 @@
       </field>
     
       </record>
-        <!-- ANADIDO EN MANY2ONE  FIN -->
 
         <record model="ir.actions.act_window" id="session_list_action">
         <field name="name">Sessions</field>
@@ -182,7 +182,7 @@
         <field name="view_mode">tree,form</field>
         </record>
 
-        <!-- <menuitem id="session_menu" name="Sesiones" parent="course_menu_main" action="session_list"/> -->
+        
         <menuitem
           id="session_menus"
           name="Sesiones"
@@ -190,7 +190,7 @@
           parent="sub_main_menu"/>
 
 
-<!-- ejercicio de sessions fin   -->
+
 </odoo>
 
 
